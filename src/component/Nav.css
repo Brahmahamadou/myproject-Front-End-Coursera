@@ -1,0 +1,18 @@
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Exemple de système de grille avec deux colonnes égales */
+    grid-gap: 10px; /* Espacement entre les éléments de la grille */
+    align-items: center;
+  }
+  @media screen and (max-width: 768px) {
+    nav ul {
+      grid-template-columns: repeat(3, auto); /* Réduire le nombre de colonnes pour s'adapter à la taille de l'écran */
+    }
+  }
+  
+  /* Point de rupture pour les écrans plus petits (par exemple, smartphones) */
+  @media screen and (max-width: 480px) {
+    nav ul  {
+      grid-template-columns: repeat(1, auto); /* Une seule colonne pour les écrans très petits */
+    }
+  }
