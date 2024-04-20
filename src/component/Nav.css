@@ -1,9 +1,18 @@
+nav{
+  display: flex;
+  justify-content: space-around;
+}
 nav ul {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Exemple de système de grille avec deux colonnes égales */
-    grid-gap: 10px; /* Espacement entre les éléments de la grille */
+    grid-gap: 20px; /* Espacement entre les éléments de la grille */
     align-items: center;
+    list-style-type: none;
   }
+li a{
+  text-decoration: none;
+  color: black;
+}
   @media screen and (max-width: 768px) {
     nav ul {
       grid-template-columns: repeat(3, auto); /* Réduire le nombre de colonnes pour s'adapter à la taille de l'écran */
