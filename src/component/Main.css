@@ -1,0 +1,22 @@
+.cont button{
+    border: none;
+    border-radius: 5px;
+    height: 1.5rem;
+    background-color:#FACE14;
+}
+.granCont{
+    width: 80%;
+    height: 15rem;
+    background-color: #495E57 ;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+}
+.granCont1{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-around;
+    margin-top: 10px;
+}

@@ -1,10 +1,24 @@
-import React from "react"
+import React from "react";
+import './Main.css';
 
 function Main() {
     return (
-        <>
-
-        </>
-    )
+        <div>
+        <div className="granCont">
+            <div className="cont">
+                <h2>Little Lemon</h2>
+                <h5>Chicago</h5>
+                <p>
+                    We are a family owned <br /> Mediterranean restaurant, <br /> focused on traditional <br /> recipes served with a modern <br /> twist
+                </p>
+                <button>Reserve a Table</button>
+            </div>
+            <div>
+                <img src={process.env.PUBLIC_URL + '/icons_assets/restauranfood.jpg'} alt="Home" style={{ width: '250px', height: '300px', borderRadius: '10px'}} />
+            </div>
+        </div>
+        </div>
+    );
 }
-export default Main
+
+export default Main;

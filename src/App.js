@@ -3,7 +3,7 @@ import Header from './component/Header';
 import Nav from './component/Nav';
 import Main from './component/Main';
 import Footer from './component/Footer';
-
+import Special from './component/Special';
 function App() {
   return (
     <>
@@ -11,6 +11,7 @@ function App() {
       <Nav />
       {/* Contenu principal */}
       <Main />
+      <Special />
       <Footer />
     </>
   );
