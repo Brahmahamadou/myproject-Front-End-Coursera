@@ -13,8 +13,8 @@ function Special() {
         </div>
       </div>
         <div className="cards">
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={process.env.PUBLIC_URL + '/icons_assets/restauranfood.jpg'} style={{ width: '250px', height: '300px', borderRadius: '10px'}} />
+          <Card style={{ width: "16rem", height:"30rem", background: '#EDEFEE', overflow: 'hidden' }}>
+            <Card.Img variant="top" src={process.env.PUBLIC_URL + '/photos/salad.jpg'} className="center-image" style={{ width: '250px', height: '200px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px', margin: 'auto' }} />
             <Card.Body>
               <Card.Title>Greek Salad</Card.Title>
               <Card.Text>
@@ -25,8 +25,8 @@ function Special() {
               <Button variant="primary">Order Delivery </Button>
             </Card.Body>
           </Card>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/photos/bruchetta.svg`} />
+          <Card style={{ width: "16rem", background: '#EDEFEE', overflow: 'hidden' }}>
+          <Card.Img variant="top" src={process.env.PUBLIC_URL + '/photos/bruchetta.svg'} className="center-image" style={{ width: '250px', height: '200px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px', margin: 'auto' }} />
             <Card.Body>
               <Card.Title>Bruschetta</Card.Title>
               <Card.Text>
@@ -37,9 +37,8 @@ function Special() {
               <Button variant="primary">Order Delivery </Button>
             </Card.Body>
           </Card>
-  
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/photos/dessert.jpg`} />
+          <Card style={{ width: "16rem", background: '#EDEFEE', overflow: 'hidden' }}>
+          <Card.Img variant="top" src={process.env.PUBLIC_URL + '/photos/dessert.jpg'} className="center-image" style={{ width: '250px', height: '200px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px', margin: 'auto' }} />
             <Card.Body>
               <Card.Title>Lemon Cake</Card.Title>
               <Card.Text>
