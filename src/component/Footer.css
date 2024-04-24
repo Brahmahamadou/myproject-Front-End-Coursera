@@ -1,0 +1,10 @@
+.myfooter{
+    margin-top: 2rem;
+    background: #333333;
+    color: aliceblue;
+    height: 2rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+}

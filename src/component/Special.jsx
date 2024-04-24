@@ -15,7 +15,7 @@ function Special() {
         <div className="cards">
           <Card style={{ width: "16rem", height:"30rem", background: '#EDEFEE', overflow: 'hidden' }}>
             <Card.Img variant="top" src={process.env.PUBLIC_URL + '/photos/salad.jpg'} className="center-image" style={{ width: '250px', height: '200px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px', margin: 'auto' }} />
-            <Card.Body>
+            <Card.Body className="card-body">
               <Card.Title>Greek Salad</Card.Title>
               <Card.Text>
                 The famous greek salad of crispy lettuce, peppers, olives and our
@@ -25,21 +25,20 @@ function Special() {
               <Button variant="primary">Order Delivery </Button>
             </Card.Body>
           </Card>
-          <Card style={{ width: "16rem", background: '#EDEFEE', overflow: 'hidden' }}>
+          <Card style={{ width: "16rem",height:"30rem",  background: '#EDEFEE', overflow: 'hidden' }}>
           <Card.Img variant="top" src={process.env.PUBLIC_URL + '/photos/bruchetta.svg'} className="center-image" style={{ width: '250px', height: '200px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px', margin: 'auto' }} />
-            <Card.Body>
+            <Card.Body className="card-body">
               <Card.Title>Bruschetta</Card.Title>
               <Card.Text>
                 Our Bruschetta is made from homemade grilled bread that has been
-                smeared with garlic and seasoned with salt and olive oil. Topped
-                with fresh vegetables.
+                smeared with garlic and seasoned with salt and olive oil.
               </Card.Text>
               <Button variant="primary">Order Delivery </Button>
             </Card.Body>
           </Card>
-          <Card style={{ width: "16rem", background: '#EDEFEE', overflow: 'hidden' }}>
+          <Card style={{ width: "16rem",height:"30rem", background: '#EDEFEE', overflow: 'hidden' }}>
           <Card.Img variant="top" src={process.env.PUBLIC_URL + '/photos/dessert.jpg'} className="center-image" style={{ width: '250px', height: '200px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px', margin: 'auto' }} />
-            <Card.Body>
+            <Card.Body className="card-body">
               <Card.Title>Lemon Cake</Card.Title>
               <Card.Text>
                 This comes straight from grandma’s recipe book, every last
