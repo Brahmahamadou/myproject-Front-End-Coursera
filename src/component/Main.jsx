@@ -6,9 +6,9 @@ function Main() {
         <div>
         <div className="granCont">
             <div className="cont">
-                <h2>Little Lemon</h2>
-                <h5>Chicago</h5>
-                <p>
+                <h2 style={{fontSize:"30px", color:"#FACE14",}}>Little Lemon</h2>
+                <h5 style={{color:"#EDEFEE"}}>Chicago</h5>
+                <p style={{color:"#EDEFEE"}}>
                     We are a family owned <br /> Mediterranean restaurant, <br /> focused on traditional <br /> recipes served with a modern <br /> twist
                 </p>
                 <button>Reserve a Table</button>
