@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './component/Header';
+import Header from './component/Home';
 import Nav from './component/Nav';
 import Main from './component/Main';
 import Footer from './component/Footer';
@@ -10,7 +10,6 @@ function App() {
     <>
      <Header />
       <Nav />
-      {/* Contenu principal */}
       <Main />
       <Special />
       <About />
