@@ -1,250 +1,46 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../css/booking.css";
-const BookingForm = ({
-  bookingData,
-  setBookingData,
-  availableTimes,
-  setAvailableTimes,
-  submitForm,
-}) => {
-  const [dateError, setDateError] = useState(null);
-  const [timeError, setTimeError] = useState(null);
-  const [guestsError, setGuestsError] = useState(null);
-  const [occasionError, setOccasionError] = useState(null);
-  const [isTouched, setIsTouched] = useState(false);
-  const [validated, setValidated] = useState(false);
+import React, { useState } from 'react';
 
-  const [isLoading, setIsLoading] = useState(false);
+const BookingForm = () => {
+  // Déclaration des variables d'état pour chaque champ du formulaire
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('17:00'); // Par défaut à 17:00
+  const [guests, setGuests] = useState(1); // Par défaut 1 invité
+  const [occasion, setOccasion] = useState('Birthday'); // Par défaut anniversaire
 
-  useEffect(() => {
-    validateForm();
-  }, [
-    dateError,
-    timeError,
-    guestsError,
-    occasionError,
-    isTouched,
-    validateForm,
-  ]);
+  // Tableau d'heures disponibles
+  const availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
 
-  const handleBlur = () => {
-    validateForm();
-  };
-
-  const handleChange = (e) => {
-    // console.log("should update errors");
-
-    switch (e.target.id) {
-      case "res-date":
-        setAvailableTimes({ type: "update_times" });
-        setBookingData((prevState) => {
-          return { ...prevState, date: e.target.value };
-        });
-        break;
-      case "res-time":
-        setBookingData((prevState) => {
-          return { ...prevState, time: e.target.value };
-        });
-        break;
-      case "guests":
-        setBookingData((prevState) => {
-          return { ...prevState, guests: e.target.value };
-        });
-        break;
-      case "occasion":
-        setBookingData((prevState) => {
-          return { ...prevState, occasion: e.target.value };
-        });
-        break;
-      default:
-        break;
-    }
-
-    setIsTouched(true);
-    validateForm();
-  };
-  function isValidDate(dateString) {
-    const yyyymmdd = dateString.split("-");
-    const dateObj = new Date(
-      parseInt(yyyymmdd[0]),
-      parseInt(yyyymmdd[1]) - 1,
-      parseInt(yyyymmdd[2]) + 1
-    );
-
-    if (dateObj < new Date()) return false;
-    return true;
-  }
-
-  function validateForm() {
-    if (isTouched) {
-      if (bookingData.guests < 1) {
-        setGuestsError("Has to be at least 1 guest");
-      } else if (bookingData.guests > 10) {
-        setGuestsError("Cannot seat more then 10");
-      } else {
-        setGuestsError(null);
-      }
-
-      if (bookingData.date === "") {
-        setDateError("Must select a date");
-      } else {
-        setDateError(null);
-      }
-      if (!isValidDate(bookingData.date)) {
-        setDateError(`Sorry! Reservations not available for this date!`);
-      } else {
-        setDateError(null);
-      }
-      if (bookingData.time === "") {
-        setTimeError("Must select a time");
-      } else {
-        setTimeError(null);
-      }
-
-      if (bookingData.occasion === "") {
-        setOccasionError("Must select an occasion");
-      } else {
-        setOccasionError(null);
-      }
-
-      if (
-        dateError === null &&
-        timeError === null &&
-        guestsError === null &&
-        occasionError === null &&
-        isTouched
-      ) {
-        setValidated(true);
-      } else {
-        setValidated(false);
-      }
-    }
-  }
-
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (submitForm() === true) {
-      console.log("success");
-      navigate("/confirmation");
-    } else {
-      alert("Error");
-    }
-  };
-
-  const [items, setItems] = useState({
-    date: "",
-    time: "",
-    guests: "",
-    occasion: "",
-  });
-
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("bookings"));
-    if (items) {
-      setItems(items);
-    }
-  }, []);
-
-  const AvailableTimes = () => {
-    const items = JSON.parse(localStorage.getItem("bookings"));
-
-    console.log(bookingData, items);
-    if (bookingData && bookingData.date && items.date !== bookingData.date) {
-      return availableTimes.times.map((time) => {
-        return <option key={time}>{time}</option>;
-      });
-    } else {
-      return availableTimes.times.map((time) => {
-        if (items && items.time !== time)
-          return <option key={time}>{time}</option>;
-      });
-    }
+  // Gestionnaire de soumission du formulaire
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Ici, vous pouvez implémenter la logique pour soumettre les données du formulaire à une API
+    // Par exemple, vous pouvez utiliser Axios pour envoyer les données à votre serveur
+    console.log({ date, time, guests, occasion });
   };
 
   return (
-    <>
-      <h1>Book Table Now</h1>
-      <div className="booking-wrapper">
-        <form
-          data-testid="booking-form"
-          className="booking"
-          onSubmit={handleSubmit}
-        >
-          <label htmlFor="res-date">Choose date</label>
-          <input
-            data-testid="date"
-            id="res-date"
-            required
-            value={bookingData.date}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            type="date"
-          />
-          <span className="error">{dateError}</span>
-          <label htmlFor="res-time">Choose time</label>
-          <div data-testid="res-time">
-            <select
-              data-testid="time"
-              id="res-time"
-              required
-              value={bookingData.time}
-              onBlur={handleBlur}
-              onChange={handleChange}
-            >
-              <option></option>
-              <AvailableTimes />
-            </select>
-          </div>
-          <span className="error">{timeError}</span>
-          <label htmlFor="guests">Guests</label>
-          <input
-            data-testid="guests"
-            required
-            type="number"
-            placeholder="1"
-            min="1"
-            max="10"
-            id="guests"
-            value={bookingData.guests}
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-          <span className="error">{guestsError}</span>
-
-          <label htmlFor="occasion">Occasion</label>
-          <div data-testid="res-occasion">
-            <select
-              data-testid="occasion"
-              id="occasion"
-              required
-              value={bookingData.occasion}
-              onBlur={handleBlur}
-              onChange={handleChange}
-            >
-              <option></option>
-              <option>None</option>
-              <option>Birthday</option>
-              <option>Anniversary</option>
-            </select>
-          </div>
-          <span className="error">{occasionError}</span>
-          <button
-            onclick="handleCommand(event)"
-            data-testid="submit"
-            id="submitButton"
-            required
-            disabled={!validated}
-            type="submit"
-          >
-            {isLoading ? "Loading..." : "Make Your Reservation"}
-          </button>
-        </form>
-      </div>
-    </>
+    <form style={{ display: 'grid', maxWidth: '200px', gap: '20px' }} onSubmit={handleSubmit}>
+      <label htmlFor="res-date">Choose date</label>
+      <input type="date" id="res-date" value={date} onChange={(e) => setDate(e.target.value)} />
+      
+      <label htmlFor="res-time">Choose time</label>
+      <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
+        {availableTimes.map((availableTime) => (
+          <option key={availableTime}>{availableTime}</option>
+        ))}
+      </select>
+      
+      <label htmlFor="guests">Number of guests</label>
+      <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={(e) => setGuests(parseInt(e.target.value))} />
+      
+      <label htmlFor="occasion">Occasion</label>
+      <select id="occasion" value={occasion} onChange={(e) => setOccasion(e.target.value)}>
+        <option value="Birthday">Birthday</option>
+        <option value="Anniversary">Anniversary</option>
+      </select>
+      
+      <input type="submit" value="Make Your reservation" />
+    </form>
   );
 };
 
