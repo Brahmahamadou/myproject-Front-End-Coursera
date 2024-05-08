@@ -3,7 +3,7 @@ nav{
   display: flex;
   justify-content: space-around;
 }
-nav ul {
+nav ul{
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Exemple de système de grille avec deux colonnes égales */
     grid-gap: 20px; /* Espacement entre les éléments de la grille */
